@@ -24,3 +24,5 @@ mongoose.connect(MONGODB_URL).then(() => {
         console.log(`Server is running on ${portNo}`)
     })
 })
+
+module.exports =app;//for vercel
