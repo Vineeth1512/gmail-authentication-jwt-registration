@@ -11,6 +11,11 @@ app.use(cors());
 app.use('/user',userRoutes);
 
 
+app.get("/",(req,res)=>{
+    return res.status(200).json({
+        message:"Welcome to User Registration"
+    })
+})
 const MONGODB_URL =process.env.DATABASE_URL
 mongoose.connect(MONGODB_URL).then(() => {
     console.log("MongoDB is connected");
