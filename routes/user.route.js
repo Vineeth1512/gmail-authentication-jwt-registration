@@ -8,7 +8,7 @@ router.use('/changepassword', userAuthorization.checkUserAuth);
 router.use('/details',userAuthorization.checkUserAuth);
 
 router.post("/register",userController.userRegistration);
-router.get("/login",userController.userLogin);
+router.post("/login",userController.userLogin);
 router.post('/send-reset-password-email', userController.sendUserPasswordResetEmail)
 router.post('/reset-password/:id/:token',userController.userResetPassword);
 
