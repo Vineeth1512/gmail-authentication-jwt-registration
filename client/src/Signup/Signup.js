@@ -1,36 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
-import { useState } from 'react'
-import {toast} from "react-toastify"
-import axios from 'axios'
-import './signup.css'
-function SignUp(props) {
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import './signup.css';
 
+function SignUp(props) {
+    const navigate = useNavigate();
     const [data, setData] = useState({
         name: "",
         email: "",
         password: "",
         confirmPassword: "",
         tc: false
-
-    })
+    });
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log(data);
-        if (
-            data.name === "" ||
-            data.email === "" ||
-            data.password === "" ||
-            data.confirmPassword === "" ||
-            !data.tc // Check if the checkbox is not checked
-        ) {
-            toast.error("All fields are Required.");
-        } else {
-            try {
-                const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/register", data);
-                console.log(response);
-                toast.success("User Register successfully.");
+        try {
+            const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/register", data);
+            console.log(response);
+            toast.success(response.data.message);
+            setTimeout(() => {
                 setData({
                     name: "",
                     email: "",
@@ -38,44 +29,58 @@ function SignUp(props) {
                     confirmPassword: "",
                     tc: false
                 });
-            
-            } catch (err) {
-                console.log(err);
-            }
+                navigate("/login");
+            }, 3000);
+        } catch (err) {
+            console.log(err.response.data.message);
+            toast.error(err.response.data.message);
         }
-    }
-    
+
+    };
+
+
     return (
         <>
             <Header isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} />
             <main className="main-container">
                 <div>
-                    <form className="login-page-login-form" >
+                    <form className="login-page-login-form">
                         <h1>Sign Up</h1>
-                        <input className="input-field" type="text" id="username" required
+                        <input
+                            className="input-field"
+                            type="text"
+                            id="username"
+                            required
                             placeholder="Enter Username"
                             value={data.name}
                             onChange={(e) => setData({ ...data, name: e.target.value })}
                         />
-                        <input className="input-field" type="email"
-                            placeholder="Enter your email" required
+                        <input
+                            className="input-field"
+                            type="email"
+                            placeholder="Enter your email"
+                            required
                             value={data.email}
                             onChange={(e) => setData({ ...data, email: e.target.value })}
                         />
-                        <input className="input-field" type="password"
-                             placeholder="Enter Password"
+                        <input
+                            className="input-field"
+                            type="password"
+                            placeholder="Enter Password"
                             value={data.password}
                             onChange={(e) => setData({ ...data, password: e.target.value })}
-
                         />
-                        <input className="input-field" type="password"
-                            id="password" placeholder="Enter Confirm Password"
+                        <input
+                            className="input-field"
+                            type="password"
+                            id="password"
+                            placeholder="Enter Confirm Password"
                             value={data.confirmPassword}
                             onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
-
                         />
                         <div className="policy">
-                            <input type="checkbox"
+                            <input
+                                type="checkbox"
                                 checked={data.tc}
                                 onChange={(e) => setData({ ...data, tc: e.target.checked })}
                             />
@@ -88,8 +93,9 @@ function SignUp(props) {
                     </form>
                 </div>
             </main>
+            <ToastContainer />
         </>
-    )
+    );
 }
 
-export default SignUp
+export default SignUp;

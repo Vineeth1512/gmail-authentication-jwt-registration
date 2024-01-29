@@ -18,7 +18,7 @@ function Signin(props) {
             toast.error("All fields are Required.");
         } else {
             try {
-                const response = await axios.get("https://gmail-authentication-jwt-registration.vercel.app/user/login", {
+                const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/login", {
                     email: data.email,
                     password: data.password,
                 });
