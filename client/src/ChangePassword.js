@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header/Header'
 import { useState } from 'react'
 import axios from 'axios'
+import { useEffect, useParams } from 'react'
 import { useNavigate } from 'react-router-dom'
 function ChangePassword(props) {
     const [data, setData] = useState({ 
@@ -9,12 +10,20 @@ function ChangePassword(props) {
         confirmPassword:""
     })
     const navigate =useNavigate();
+    
+    const { id, token } = useParams();
+    useEffect(() => {
+        // Log the user ID and token for debugging purposes
+        console.log('User ID:', id);
+        console.log('Token:', token);
+    }, [id, token]);
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         console.log(data);
         
             try {
-                const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/changepassword", data,);
+                const response = await axios.post(`https://gmail-authentication-jwt-registration.vercel.app/reset-password/${id}/${token}`, data,
+               );
                 console.log(response.data);
                 alert(response.data.message);
                 setTimeout(()=>{
@@ -25,7 +34,7 @@ function ChangePassword(props) {
                     navigate("/login");
                 })
                
-
+                localStorage.removeItem('authToken');
             } catch (err) {
                 console.log(err);
                alert(err.response.data.message);

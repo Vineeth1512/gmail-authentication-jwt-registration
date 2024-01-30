@@ -9,16 +9,16 @@ module.exports.checkUserAuth = async (req, res, next) => {
     let token;
     const { authorization } = req.headers;
 
-    if (authorization) {
+    if (authorization && authorization.startsWith('Bearer')) {
         try {
-            // Extract token without the "Bearer" prefix
-            token = authorization.replace('Bearer ', '');
+            // Get Token from header
+            token = authorization.split(' ')[1];
             console.log('Received Token:', token);
-    
+
             // Verify Token
             const { userID } = jwt.verify(token, process.env.JWT_SECRET_KEY);
             console.log('Decoded UserID:', userID);
-    
+
             // Get User from Token
             req.user = await User.findById(userID).select('-password');
             next();
