@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 module.exports.checkUserAuth = async (req, res, next) => {
     let token;
+    console.log(token);
     const { authorization } = req.headers;
     if (authorization && authorization.startsWith('Bearer')) {
         try {

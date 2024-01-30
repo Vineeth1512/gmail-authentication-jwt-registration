@@ -12,7 +12,6 @@ function Signin(props) {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log(data);
       
             try {
                 const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/login", data);

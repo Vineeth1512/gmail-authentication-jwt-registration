@@ -10,6 +10,8 @@ function ResetPassword(props) {
         try{
             const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/send-reset-password-email",email);
             console.log(response);
+            const token = response.data.token;
+            localStorage.setItem('token', token);
             alert(response.data.message);
             setEmail({
                 email:""
