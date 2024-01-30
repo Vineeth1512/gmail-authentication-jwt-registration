@@ -89,7 +89,7 @@ module.exports.sendUserPasswordResetEmail = async (req, res) => {
 
         const secret = user._id + process.env.JWT_SECRET_KEY;
         const token = jwt.sign({ userID: user._id }, secret, { expiresIn: '15m' });
-        const link = `http://127.0.0.1:3000/api/user/reset/${user._id}/${token}`; // Update with your actual domain
+        const link = `http://localhost:3000/changePassword/${user._id}/${token}`; // Update with your actual domain
 
         console.log(link);
 

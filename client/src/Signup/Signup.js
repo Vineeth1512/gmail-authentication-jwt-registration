@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
-import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import './signup.css';
@@ -20,7 +19,7 @@ function SignUp(props) {
         try {
             const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/register", data);
             console.log(response);
-            toast.success(response.data.message);
+           alert(response.data.message);
             setTimeout(() => {
                 setData({
                     name: "",
@@ -33,7 +32,7 @@ function SignUp(props) {
             }, 3000);
         } catch (err) {
             console.log(err.response.data.message);
-            toast.error(err.response.data.message);
+           alert(err.response.data.message);
         }
 
     };
@@ -93,7 +92,7 @@ function SignUp(props) {
                     </form>
                 </div>
             </main>
-            <ToastContainer />
+           
         </>
     );
 }

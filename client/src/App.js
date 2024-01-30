@@ -33,7 +33,7 @@ useEffect(() => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Signin />} />
         <Route path="/forgetPassword" element={<ResetPassword />} />
-        <Route path='/changePassword' element = {<ChangePassword/>}/>
+        <Route path='/reset-password/:id/:token' element = {<ChangePassword/>}/>
       </Routes>
     </BrowserRouter>
   )

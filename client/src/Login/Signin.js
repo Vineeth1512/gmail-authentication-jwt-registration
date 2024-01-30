@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../Header/Header'
 import { useState } from 'react'
-import { toast } from "react-toastify"
 import axios from 'axios'
 function Signin(props) {
     const [data, setData] = useState({
@@ -14,25 +13,21 @@ function Signin(props) {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         console.log(data);
-        if (data.email === "" || data.password === "") {
-            toast.error("All fields are Required.");
-        } else {
+      
             try {
-                const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/login", {
-                    email: data.email,
-                    password: data.password,
-                });
+                const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/login", data);
                 console.log(response);
-                toast.success("User Login successfully.");
+                alert(response.data.message);
                 setData({
                     email: "",
                     password: "",
                 });
 
             } catch (err) {
-                console.log(err);
+                console.log(err.response.data.message);
+               alert(err.response.data.message);
             }
-        }
+        
     }
     return (
         <>
@@ -58,7 +53,6 @@ function Signin(props) {
                     </form>
                 </div>
             </main>
-
         </>
     )
 }
