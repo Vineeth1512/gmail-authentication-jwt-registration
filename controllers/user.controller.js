@@ -114,6 +114,7 @@ module.exports.userResetPassword = async (req, res) => {
     const { id, token } = req.params;
     const user = await User.findById(id);
     const newScrect = user._id + process.env.JWT_SECRET_KEY
+    console.log(newScrect);
     try {
         jwt.verify(token, newScrect)
         if (password && confirmPassword) {
