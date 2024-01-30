@@ -15,7 +15,7 @@ function ChangePassword(props) {
         
 const token = localStorage.getItem('token');
 // Include the token in the request headers
-const headers = { Authorization: `Bearer ${token}` };
+const headers = { authorization: `Bearer ${token}` };
             try {
                 const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/changepassword", data,{ headers });
                 console.log(response.data);
