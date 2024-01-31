@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import './signup.css';
 
-function SignUp(props) {
+function SignUp() {
     const navigate = useNavigate();
     const [data, setData] = useState({
         name: "",
@@ -19,7 +19,6 @@ function SignUp(props) {
         try {
             const response = await axios.post("https://gmail-authentication-jwt-registration.vercel.app/user/register", data);
             console.log(response);
-           alert(response.data.message);
             setTimeout(() => {
                 setData({
                     name: "",
@@ -29,18 +28,15 @@ function SignUp(props) {
                     tc: false
                 });
                 navigate("/login");
-            }, 3000);
+            }, 1000);
         } catch (err) {
             console.log(err.response.data.message);
-           alert(err.response.data.message);
+            alert(err.response.data.message);
         }
-
     };
-
-
     return (
         <>
-            <Header isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} />
+            <Header />
             <main className="main-container">
                 <div>
                     <form className="login-page-login-form">
@@ -92,7 +88,6 @@ function SignUp(props) {
                     </form>
                 </div>
             </main>
-           
         </>
     );
 }

@@ -2,44 +2,38 @@ import React from 'react'
 import Header from './Header/Header'
 import { useState } from 'react'
 import axios from 'axios'
-import { useEffect, useParams } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 function ChangePassword(props) {
-    const [data, setData] = useState({ 
+    const [data, setData] = useState({
         password: "",
-        confirmPassword:""
+        confirmPassword: ""
     })
-    const navigate =useNavigate();
-    
+    const navigate = useNavigate();
     const { id, token } = useParams();
     useEffect(() => {
-        // Log the user ID and token for debugging purposes
-        console.log('User ID:', id);
-        console.log('Token:', token);
     }, [id, token]);
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         console.log(data);
-        
-            try {
-                const response = await axios.post(`https://gmail-authentication-jwt-registration.vercel.app/reset-password/${id}/${token}`, data,
-               );
-                console.log(response.data);
-                alert(response.data.message);
-                setTimeout(()=>{
-                    setData({
-                        password: "",
-                        confirmPassword:""
-                    });
-                    navigate("/login");
-                })
-               
-                localStorage.removeItem('authToken');
-            } catch (err) {
-                console.log(err);
-               alert(err.response.data.message);
-            }
-        
+        try {
+            const response = await axios.post(`https://gmail-authentication-jwt-registration.vercel.app/user/reset-password/${id}/${token}`, data,
+            );
+            console.log(response.data);
+            alert(response.data.message);
+            setTimeout(() => {
+                setData({
+                    password: "",
+                    confirmPassword: ""
+                });
+                navigate("/login");
+            })
+
+        } catch (err) {
+            console.log(err);
+            alert(err.response.data.message);
+        }
     }
     return (
         <>

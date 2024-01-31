@@ -89,7 +89,7 @@ module.exports.sendUserPasswordResetEmail = async (req, res) => {
 
         const secret = user._id + process.env.JWT_SECRET_KEY;
         const token = jwt.sign({ userID: user._id }, secret, { expiresIn: '15m' });
-     
+
         const link = `http://localhost:3000/reset-password/${user._id}/${token}`; // Update with your actual domain
 
         console.log(link);
@@ -101,7 +101,7 @@ module.exports.sendUserPasswordResetEmail = async (req, res) => {
             html: `<a href=${link}>Click Here</a> to Reset Your Password`
         });
 
-        res.status(200).json({ "status": "success", "message": "Password Reset Email Sent... Please Check Your Email" ,"token":token});
+        res.status(200).json({ "status": "success", "message": "Password Reset Email Sent... Please Check Your Email", "token": token });
     } catch (error) {
         console.error("Error sending email:", error);
         res.status(500).json({ "status": "error", "message": "Internal Server Error" });
@@ -133,21 +133,5 @@ module.exports.userResetPassword = async (req, res) => {
     catch (err) {
         console.log(err)
         res.status(400).json({ "status": "failed", "message": "Invalid Token" })
-    }
-}
-
-
-module.exports.changeUserPassword = async (req, res) => {
-    const { password, confirmPassword } = req.body;
-    if (password && confirmPassword) {
-        if (password !== confirmPassword) {
-            res.status(400).json({ "status": "failed", "message": "New Password and Confirm New Password doesn't match" })
-        } else {
-            const newHashPassword = await bycript.hash(password, 10);
-            await User.findByIdAndUpdate(req.user._id, { $set: { password: newHashPassword } });
-            res.status(200).json({ "status": "success", "message": "Password changed succesfully" })
-        }
-    } else {
-        res.status(400).json({ "status": "failed", "message": "all fields are Required." })
     }
 }
