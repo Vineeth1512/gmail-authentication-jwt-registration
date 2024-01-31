@@ -64,7 +64,7 @@ nav {
 }
 
 /* Adjusted styles for smaller screens */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
     .header-left-side {
         flex-direction: column;
         align-items: flex-start;

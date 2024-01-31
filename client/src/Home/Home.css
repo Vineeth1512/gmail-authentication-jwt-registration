@@ -36,7 +36,7 @@ a:hover {
 }
 
 /* Mobile responsiveness */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
     .content {
         padding-top: 60px; /* Adjusted padding for smaller screens */
     }
