@@ -7,13 +7,14 @@ import Signin from './Login/Signin';
 import ResetPassword from './ForgetPassword/ResetPassword';
 import ChangePassword from './ChangePassword';
 import UserDetails from './UserDetails/UserDetails';
+import Home from './Home/HomeHeader';
 import HomeHeader from './Home/HomeHeader';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomeHeader />} />
+        <Route path="/" element={<HomeHeader/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Signin />} />
         <Route path="/forgetPassword" element={<ResetPassword />} />

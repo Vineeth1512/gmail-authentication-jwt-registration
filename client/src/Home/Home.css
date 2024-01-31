@@ -1,0 +1,40 @@
+
+.content {
+    margin: 0;
+    padding-top: 0,20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFF;
+    height: 100vh;
+    text-align: center;
+    color: #FFF;
+    background: url('https://images.pexels.com/photos/194096/pexels-photo-194096.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover no-repeat;
+    background-color: #FF4081; /* Fallback color if the image fails to load */
+
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.links {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #20798d;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+a:hover {
+    background-color: #45a049;
+}

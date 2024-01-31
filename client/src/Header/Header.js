@@ -15,7 +15,7 @@ function Header() {
                         <Link className="nav-bar" to={"/"}>Home</Link>
                             <Link className="nav-bar " >Contact</Link>
                             <Link className="nav-bar " >About</Link>
-                            <Link className="nav-bar" to={"/signup"}>Register</Link>
+                            <Link className="nav-bar" to={"/signup"}>SignUp</Link>
                             <Link className="nav-bar" to={"/login"}>Login</Link>
                         </nav>
                     </div> 
