@@ -12,7 +12,9 @@ function HomeHeader() {
                       
                     </div>
                     <div> 
-                    <Link className="nav-bar" to={"/signup"}>Login/Register</Link>
+                    <Link className="nav-bar" to={"/signup"}>Register</Link>
+                    
+                    <Link className="nav-bar" to={"/login"}>Login</Link>
                         {/* {renderButton()} */}</div>
                    
                     
