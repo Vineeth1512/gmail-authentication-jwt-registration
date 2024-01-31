@@ -90,7 +90,7 @@ module.exports.sendUserPasswordResetEmail = async (req, res) => {
         const secret = user._id + process.env.JWT_SECRET_KEY;
         const token = jwt.sign({ userID: user._id }, secret, { expiresIn: '15m' });
 
-        const link = `http://localhost:3000/reset-password/${user._id}/${token}`; // Update with your actual domain
+        const link = `https://front-end-gmail-authentication-jwt-registration.vercel.app/reset-password/${user._id}/${token}`; // Update with your actual domain
 
         console.log(link);
 
