@@ -1,18 +1,14 @@
-
 .content {
     margin: 0;
-    padding-top: 0,20px;
+    padding-top: 20px; /* Fix typo: removed the comma */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #FFF;
     height: 100vh;
-    text-align: center;
-    color: #FFF;
     background: url('https://images.pexels.com/photos/194096/pexels-photo-194096.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover no-repeat;
     background-color: #FF4081; /* Fallback color if the image fails to load */
-
 }
 
 h1 {
@@ -37,4 +33,24 @@ p {
 
 a:hover {
     background-color: #45a049;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 400px) {
+    .content {
+        padding-top: 60px; /* Adjusted padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 2.5em; /* Decreased font size for smaller screens */
+    }
+
+    p {
+        font-size: 1.2em; /* Decreased font size for smaller screens */
+    }
+
+    .links {
+        margin: 10px; /* Decreased margin for smaller screens */
+        font-size: 1em; /* Decreased font size for smaller screens */
+    }
 }

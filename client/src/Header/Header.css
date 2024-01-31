@@ -1,3 +1,4 @@
+/* Common styles for all screen sizes */
 body,
 form,
 input,
@@ -11,7 +12,7 @@ textarea {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0 48px;
+    padding: 16px; /* Adjusted padding for smaller screens */
     box-sizing: border-box;
     position: fixed;
     top: 0;
@@ -31,19 +32,17 @@ textarea {
 .header-logo-wrapper {
     display: flex;
     align-items: center;
-  
-    margin-right: 36px;
+    margin-right: 16px; /* Adjusted margin for smaller screens */
 }
 
-
 .header-logo-wrapper img {
-    width: 24px;
-    height: 28px;
+    width: 20px; /* Adjusted width for smaller screens */
+    height: 24px; /* Adjusted height for smaller screens */
     margin-right: 8px;
 }
 
 .header-brand-name {
-    font-size: 24px;
+    font-size: 18px; /* Adjusted font size for smaller screens */
     letter-spacing: -1px;
     font-weight: 500;
     margin: 0;
@@ -51,26 +50,50 @@ textarea {
 }
 
 nav {
-    display: block;
+    display: flex;
+    align-items: center;
 }
 
 .nav-bar {
-    display: inline-block;
     text-decoration: none;
     color: rgba(0, 0, 0, .8);
-    padding: 24px 0 16px;
+    margin: 0 10px; /* Adjusted margin for smaller screens */
     font-size: 14px;
     font-weight: 500;
     letter-spacing: .6px;
-    margin: 0 30px; 
 }
 
-.nav-bar.active-card {
-    color: #20b883;
-    border-bottom: 3px solid #20b883;
-}
+/* Adjusted styles for smaller screens */
+@media screen and (max-width: 400px) {
+    .header-left-side {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
+    .header-logo-wrapper {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
 
-.logout-btn {
-    margin: 0 0 0 400px;
+    .header-brand-name {
+        font-size: 16px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        display: none; /* Hide the navigation initially for smaller screens */
+    }
+
+    .nav-bar {
+        margin: 0 10px;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 8px 0;
+    }
+
+    /* Show navigation only when a mobile menu is active */
+    .mobile-menu.active nav {
+        display: flex;
+    }
 }

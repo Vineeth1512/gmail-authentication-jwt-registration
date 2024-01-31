@@ -11,12 +11,13 @@ function Header() {
                         <p className="header-brand-name">Kafene</p>
                     </div>
                     <div>
+                        <div className="header-nav">
                         <nav>
                         <Link className="nav-bar" to={"/"}>Home</Link>
-                         
                             <Link className="nav-bar" to={"/signup"}>SignUp</Link>
                             <Link className="nav-bar" to={"/login"}>Login</Link>
                         </nav>
+                        </div>
                     </div> 
                 </div>
             </div>
